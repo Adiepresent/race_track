@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title> Race Track </title>
+    <meta name="author" content="Adie Present">
+    <meta name="description" content="My cool WebVR Demo!">
+
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+
+  </head>
+  <body>
+    <a-scene fog="type: linear; color: #a3d0ed; near:5; far:20">
+
+      <!-- Car model by Google Poly
+        visit: https://poly.google.com/view/7bF7UVAoYRG
+
+        stop sign by Google Poly
+        https://poly.google.com/view/60GyU9CdZ9r
+      -->
+
+      <a-assets>
+        <img id="nyc" src="images/street.jpg">
+        <a-asset-item id="car-obj" src="models/obj/car/model.obj"></a-asset-item>
+        <a-asset-item id="car-mtl" src="models/obj/car/materials.mtl"></a-asset-item>
+        <!-- <a-asset-item id="stop-obj" src="models/obj/stop/Stop_Sign.obj"></a-asset-item>
+        <a-asset-item id="stop-mtl" src="models/obj/stop/Stop_Sign.mtl"></a-asset-item>
+ -->
+        <img id="check" src="images/check.jpg">
+
+      </a-assets>
+
+      <a-sky color="#a3d0ed"></a-sky>
+      <!-- Sky and race track platform adapted from here
+      https://www.smashingmagazine.com/2019/03/virtual-reality-endless-runner-game-vr-part-1/
+    -->
+
+      <!-- <a-entity id="stop_model" class="stop"
+          obj-model="obj: #stop-obj; mtl: #stop-mtl"
+          position="0 1 -1.528">
+      </a-entity> -->
+
+      <a-box depth="50" width="50" height="1" color="#7AD2F7" position="0 -0.5 0"></a-box>
+      <a-cone src="#check" scale="2 2 2" shadow position="2 -3.5 -3.5" rotation="0 0 90" radius-top="1.9" radius-bottom="1.9" segments-radial="10" segments-height="10" height="20" emissive="#005DED" emissive-intensity="0.1"></a-cone>
+      <a-cone color="#2B2D2F" scale="2 2 2" shadow position="-2 -3.5 -1.5" rotation="90 0 0" radius-top="1.9" radius-bottom="1.9" segments-radial="10" segments-height="10" height="20" emissive="#005DED" emissive-intensity="0.1"></a-cone>
+      <a-cone color="#2B2D2F" scale="2 2 2" shadow position="0 -3.5 -1.5" rotation="90 0 0" radius-top="1.9" radius-bottom="1.9" segments-radial="10" segments-height="10" height="20" emissive="#005DED" emissive-intensity="0.1"></a-cone>
+      <a-cone color="#2B2D2F" scale="2 2 2" shadow position="2 -3.5 -1.5" rotation="90 0 0" radius-top="1.9" radius-bottom="1.9" segments-radial="10" segments-height="10" height="20" emissive="#005DED" emissive-intensity="0.1"></a-cone>
+      <a-cone src="#check"; scale="2 2 2" shadow position="2 -3.5 -18" rotation="0 0 90" radius-top="1.9" radius-bottom="1.9" segments-radial="10" segments-height="10" height="20" emissive="#005DED" emissive-intensity="0.1"></a-cone>
+
+
+      <a-entity camera look-controls position="0 1.75 0">
+        <a-cursor color="red"
+        geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+        material="color: black; shader: flat"
+        event-set__1="_event: mouseenter; color: springgreen"
+        event-set__2="_event: mouseleave; color: red"
+        raycaster="objects: .car"></a-cursor></a-entity>
+
+      <a-entity id="person_model" class="car"
+        obj-model="obj: #car-obj; mtl: #car-mtl"
+        position="0 1 -1.528"
+        rotation="0 65 0"
+        animation__mouseenter="property: position;
+                  to: 0 1 -10;
+                  startEvents: mouseenter;
+                  dur: 1500;
+                  easing: linear"
+        animation__mouseenter="property: position;
+                  to: 0 1 -1;
+                  startEvents: mouseleave;
+                  dur: 1500;
+                  easing: linear"
+        scale="1.5 1.5 2"></a-entity>
+
+
+
+      <a-entity id="person_model" class="car"
+        obj-model="obj: #car-obj; mtl: #car-mtl"
+        position="-1 1 -1.528"
+        rotation="0 65 0"
+        animation__mouseenter="property: position;
+                    to: -1 1 -10;
+                    startEvents: mouseenter;
+                    dur: 10000;
+                    easing: linear"
+        animation__mouseenter="property: position;
+                    to: -1 1 -1.5;
+                    startEvents: mouseleave;
+                    dur: 10000;
+                    easing: linear"
+        scale="1.5 1.5 2"></a-entity>
+
+      <a-entity id="person_model" class="car"
+        obj-model="obj: #car-obj; mtl: #car-mtl"
+        position="1 1 -1.5"
+        rotation="0 70 0"
+        animation__mouseenter="property: position;
+                      to: 1 1 -10;
+                      startEvents: mouseenter;
+                      dur: 1000;
+                      easing: linear"
+        animation__mouseenter="property: position;
+                      to: 1 1 -1.5;
+                      startEvents: mouseleave;
+                      dur: 1000;
+                      easing: linear"
+        scale="1.5 1.5 2"></a-entity>
+
+
+
+    </a-scene>
+
+  </body>
+</html>
